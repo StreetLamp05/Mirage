@@ -1,3 +1,0 @@
-/home/davidkan/Desktop/UbuntuProj/MirageC/build/CMakeFiles/MirageC.dir
-/home/davidkan/Desktop/UbuntuProj/MirageC/build/CMakeFiles/edit_cache.dir
-/home/davidkan/Desktop/UbuntuProj/MirageC/build/CMakeFiles/rebuild_cache.dir

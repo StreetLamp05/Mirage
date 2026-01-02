@@ -3,4 +3,4 @@ project(MirageC)
 
 set(CMAKE_CXX_STANDARD 26)
 
-add_executable(MirageC src/main.cpp)
+add_executable(MirageC main.cpp)

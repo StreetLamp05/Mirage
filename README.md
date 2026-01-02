@@ -1,3 +1,15 @@
+build:
+```bash
+cmake --build ./build/
+```
+
+run (.mir file): 
+```bash 
+./build/MirageC <inputfile>
+```
+
+
+
 given the file:
 ```test.mir
 return 67;

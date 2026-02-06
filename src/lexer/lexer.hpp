@@ -105,7 +105,6 @@ enum class TokenType {
   KW_STRING,
   KW_BYTE,
 
-
   // general keywords
   KW_FUNC,
   KW_VAR,
@@ -130,7 +129,6 @@ enum class TokenType {
   KW_TRUE,
   KW_FALSE,
 
-
 };
 
   std::string to_string(TokenType type);
@@ -140,16 +138,15 @@ enum class TokenType {
     size_t column;
   };
 
-
   struct Token {
     TokenType type;
     std::optional<std::string> value;
     SourceLocation loc;
   };
 
-
   std::vector<Token> tokenize(const std::string& source, const std::string& filename = "<stdin>");
   void print_tokens(const std::vector<Token>& tokens);
+
 
 }
 #endif

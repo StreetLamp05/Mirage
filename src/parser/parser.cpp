@@ -9,7 +9,7 @@ std::unique_ptr<Program> parse(const std::vector<Token>& tokens) {
 
   size_t pos = 0;
 
-  if (tokens[pos].type != TokenType::KEYWORD_RETURN) {
+  if (tokens[pos].type != TokenType::KW_RETURN) {
     throw std::runtime_error("expected 'return'");
   }
   pos++;

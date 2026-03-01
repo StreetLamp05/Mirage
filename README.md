@@ -1,31 +1,43 @@
-build:
+# Mirage
+
+A compiler for the Mirage programming language, written in C++. Will boot strap eventually :P
+
+## Dependencies
+
+- CMake (3.10+)
+- C++17 compiler** (g++ or clang++)
+- NASM*
+- Clang
+
+### Install on Ubuntu/Debian
+
 ```bash
-cmake --build ./build/
+sudo apt install cmake g++ nasm clang
 ```
 
-run (.mir file): 
-```bash 
-./build/MirageC <inputfile>
+## Build
+
+```bash
+cmake -B build -S .
+cmake --build build
 ```
 
+## Run
 
-
-given the file:
-```test.mir
-return 67;
-```
-lexer needs to get tokens along the lines of:
-```
-RETURN
-INT_LIT -> 67
-SEMI
+```bash
+./build/MirageC <input.mir>
 ```
 
-then into assembly: 
+## Example
+
 ```
-global start
-start:
-mov rax, 60
-mov rd, 67
-syscall
+// hello.mir
+func main(args []string) -> int {
+    println("hello world");
+    return 0;
+}
+```
+
+```bash
+./build/MirageC hello.mir && ./program
 ```

@@ -1,0 +1,4 @@
+func main(args []string) -> int {
+    println("hello world");
+    return 0;
+}

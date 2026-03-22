@@ -32,42 +32,25 @@ int main(int argc, char* argv[]) {
   mirage::print_tokens(tokens);
 
   auto ast = mirage::parse(tokens);
-  std::string asm_code = mirage::generate(*ast);
+  std::string ir_code = mirage::generate(*ast);
 
-  std::ofstream out("output.asm");
-  out << asm_code;
+  std::ofstream out("output.ll");
+  out << ir_code;
   out.close();
-
-
 
   int status;
   pid_t pid = fork();
   if (pid == 0) {
-    execl("/usr/bin/nasm", "nasm", "-f", "elf64", "output.asm", "-o", "output.o", nullptr);
-    perror("execl nasm failed");
+    execl("/usr/bin/clang", "clang", "output.ll", "-o", "program", "-Wno-override-module", nullptr);
+    perror("execl clang failed");
     _exit(EXIT_FAILURE);
   }
   waitpid(pid, &status, 0);
   if (!WIFEXITED(status)) {
-    fprintf(stderr, "NASM assembler killed by signal %d\n", WTERMSIG(status));
+    fprintf(stderr, "Clang killed by signal %d\n", WTERMSIG(status));
     return EXIT_FAILURE;
   } else if (WEXITSTATUS(status) != EXIT_SUCCESS) {
-    fprintf(stderr, "NASM assembler failed with status %d\n", WEXITSTATUS(status));
-    return EXIT_FAILURE;
-  }
-
-  pid = fork();
-  if (pid == 0) {
-    execl("/usr/bin/ld", "ld", "output.o", "-o", "program", nullptr);
-    perror("execl ld failed");
-    _exit(EXIT_FAILURE);
-  }
-  waitpid(pid, &status, 0);
-  if (!WIFEXITED(status)) {
-    fprintf(stderr, "Linker killed by signal %d\n", WTERMSIG(status));
-    return EXIT_FAILURE;
-  } else if (WEXITSTATUS(status) != EXIT_SUCCESS) {
-    fprintf(stderr, "Linker failed with status %d\n", WEXITSTATUS(status));
+    fprintf(stderr, "Clang failed with status %d\n", WEXITSTATUS(status));
     return EXIT_FAILURE;
   }
 

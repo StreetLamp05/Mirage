@@ -13,7 +13,9 @@ namespace mirage {
     virtual ~ASTNode() = default;
   };
 
-  struct Expression : ASTNode {};
+  struct Expression : ASTNode {
+    SourceLocation loc;
+  };
 
   struct IntLiteral : Expression {
     int value;
@@ -43,7 +45,9 @@ namespace mirage {
   };
 
 
-  struct Statement : ASTNode {};
+  struct Statement : ASTNode {
+    SourceLocation loc;
+  };
 
 
   struct ReturnStatement : Statement {

@@ -1,0 +1,4 @@
+func main(args []string) -> int {
+    const EXIT_CODE = 42;
+    return EXIT_CODE;
+}

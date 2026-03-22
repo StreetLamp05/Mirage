@@ -121,7 +121,7 @@ private:
         }
     }
 
-    // ── expression generation ──
+    // expression generation
     // returns a string that is the LLVM value (register name or constant)
 
     std::string generate_expression(const Expression& expr) {

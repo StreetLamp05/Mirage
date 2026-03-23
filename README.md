@@ -6,13 +6,12 @@ A compiler for the Mirage programming language, written in C++. Will boot strap 
 
 - CMake (3.10+)
 - C++17 compiler** (g++ or clang++)
-- NASM*
 - Clang
 
 ### Install on Ubuntu/Debian
 
 ```bash
-sudo apt install cmake g++ nasm clang
+sudo apt install cmake g++ clang
 ```
 
 ## Build

@@ -2,6 +2,8 @@
 
 A compiler for the Mirage programming language, written in C++. Will boot strap eventually :P
 
+See [HERE](https://www.david-kan.com/blog/tags/Mirage) for updates!
+
 ## Dependencies
 
 - CMake (3.10+)
